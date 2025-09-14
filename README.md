@@ -1,3 +1,5 @@
+## UML
+
 ```mermaid
 classDiagram
 class Car {
@@ -16,7 +18,6 @@ class Car {
   + String toString()
   - Car(Builder)  <<constructor>>
 }
-
 class CarBuilder {
   - String brand
   - String model
@@ -33,6 +34,33 @@ class CarBuilder {
   + Car build()
   - void validate()
 }
-
 CarBuilder ..> Car : builds
+```
+
+**ASCII fallback**
+```
++----------------+
+|     Car        |
++----------------+
+| -brand:String  |
+| -model:String  |
+| -engine:String |
+| -color:String  |
+| -seats:int     |
+| -hasSunroof:bool|
++----------------+
+| +getters...    |
+| +toString()    |
+| -Car(Builder)  |
++----------------+
+        ▲ builds
++---------------------+
+|   Car.Builder       |
++---------------------+
+| fields + defaults   |
++---------------------+
+| setXxx():Builder    |
+| build():Car         |
+| -validate():void    |
++---------------------+
 ```
