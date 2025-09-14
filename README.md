@@ -14,6 +14,7 @@ class Car {
   + int getSeats()
   + boolean hasSunroof()
   + String toString()
+  - Car(Builder)  <<constructor>>
 }
 
 class CarBuilder {
@@ -33,5 +34,5 @@ class CarBuilder {
   - void validate()
 }
 
-CarBuilder --> Car : builds
+CarBuilder ..> Car : builds
 ```
