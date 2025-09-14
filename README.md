@@ -36,7 +36,7 @@ This project demonstrates the **Builder** pattern by constructing immutable `Car
 CarBuilderAssignment/
 ├─ Car.java     # Immutable product + inner static Builder + private Car(Builder) ctor
 ├─ Main.java    # Demo / entry point
-└─ README.md    # This report (build/run, UML, notes)
+└─ README.md    # This report (UML, notes)
 ```
 
 ---
