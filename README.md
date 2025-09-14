@@ -30,15 +30,35 @@ This project demonstrates the **Builder** pattern by constructing immutable `Car
 
 ---
 
-## 3) Project structure
+### 3) Project structure
 
+```
+Car-Builder-Pattern/
+├─ Car.java     # Immutable product + inner static Builder + private Car(Builder) ctor
+├─ Main.java    # Demo / entry point
+└─ README.md    # This report (build/run, UML, notes)
+```
 
-CarBuilderAssignment/
-├─ Car.java     # Car + inner static Builder
-├─ Main.java    # Demo usage (entry point)
-└─ README.md
+---
 
-## UML
+## 4) Clean Code choices
+
+| Principle / Idea  | How it’s applied |
+|---|---|
+| **Immutability** | `Car` fields are `private final`; no setters. |
+| **SRP** | `Car` stores state/behavior; `Builder` handles construction & validation. |
+| **Fluent API** | Method chaining (`.setXxx(...).build()`) reads like a sentence. |
+| **Fail-fast** | `validate()` throws if required fields are missing. |
+| **Small functions** | `build()` delegates checks to `validate()`. |
+| **Meaningful names** | `setSunroof(boolean)` is explicit; no ambiguous flags. |
+| **Sane defaults** | `color="White"`, `seats=4`, `hasSunroof=false`. |
+
+---
+
+## 5) UML Diagram
+### 5.1 Mermaid
+> **Note:** Mermaid doesn’t allow dots in class names,
+> so the inner class Car.Builder is shown as CarBuilder.
 
 ```mermaid
 classDiagram
@@ -76,8 +96,8 @@ class CarBuilder {
 }
 CarBuilder ..> Car : builds
 ```
+### 5.2 ASCII fallback (for LMS/PDF)
 
-**ASCII fallback**
 ```
 +----------------+
 |     Car        |
@@ -104,3 +124,14 @@ CarBuilder ..> Car : builds
 | -validate():void    |
 +---------------------+
 ```
+---
+
+## 6) Validation & edge cases
+
+- **Required:** `brand`, `model`, `engine` (checked in `validate()`).
+- **Optional with defaults:** `color`, `seats`, `hasSunroof`.
+- Example rule to add: `seats >= 1` (extend `validate()` if needed).
+
+---
+
+**Author:** _Sergeyeva Saltanat_ — _SE-2403_, Software Design Patterns
