@@ -1,17 +1,38 @@
 # Car.Builder — Builder Pattern in Java (Clean Code)
-### Discipline: Software Design Patterns
-### Pattern: Builder (Creational)
-### Language/Tools: Java (JDK 17+), any IDE (IntelliJ IDEA recommended)
+
+**Discipline:** Software Design Patterns  
+**Pattern:** Builder (Creational)  
+**Language/Tools:** Java (JDK 17+), any IDE (IntelliJ IDEA recommended)
+
+> **Deliverables:** Code hosted on GitHub + this Markdown report (README).  
+> A simple **UML class diagram** is included for clarity and defense.
+
+---
+
 ## 1) Overview
-### This project demonstrates the Builder pattern by constructing immutable Car objects step-by-step via a fluent API. The implementation applies Clean Code principles (readability, immutability, SRP, fail-fast validation) and is defense-ready.
-### Why Builder? Avoids telescoping constructors when an object has many optional fields. Offers readable and safe construction via method chaining. Keeps the constructed object immutable while allowing progressive configuration.
-## 2) Key Features
-- Immutable Car: all fields are private final, no setters.
-- Static inner builder: Car.Builder exposes fluent setXxx(...) methods and build().
-- Fail-fast: validate() checks required fields (brand, model, engine) before build.
-- Sane defaults: color="White", seats=4, hasSunroof=false.
-- Clean API: descriptive names, small functions, no flag parameters.
-# 3) Project Structure
+
+This project demonstrates the **Builder** pattern by constructing immutable `Car` objects step-by-step via a fluent API.
+
+**Why Builder?**
+- Avoids *telescoping constructors* when an object has many optional fields.
+- Provides a **readable** and **safe** construction process with method chaining.
+- Keeps the resulting object **immutable** while allowing flexible configuration.
+- Centralizes **validation** before object creation (fail-fast).
+
+---
+
+## 2) When to use the Builder
+
+- Many optional parameters (you’d otherwise have multiple constructor overloads).
+- Need **immutability** (no setters) but want flexible, incremental construction.
+- You want a **fluent API** for readability.
+- Construction requires **validation** or business rules.
+
+---
+
+## 3) Project structure
+
+
 CarBuilderAssignment/
 ├─ Car.java     # Car + inner static Builder
 ├─ Main.java    # Demo usage (entry point)
